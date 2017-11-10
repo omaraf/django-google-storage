@@ -108,7 +108,7 @@ class GoogleStorage(Storage):
         """Retrieves a bucket if it exists, otherwise creates it."""
         try:
             return self.connection.get_bucket(name, validate=AUTO_CREATE_BUCKET)
-        except Exception, e:
+        except Exception as e:
             if AUTO_CREATE_BUCKET:
                 bucket = self.connection.create_bucket(name)
                 bucket.set_acl(self.bucket_acl)
