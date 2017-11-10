@@ -2,9 +2,9 @@
 from django.core.files.base import File
 
 try:
-    from cStringIO import StringIO
-except ImportError:
     from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 
 
 class GSBotoStorageFile(File):
@@ -43,5 +43,7 @@ class GSBotoStorageFile(File):
 
     def close(self):
         if self._is_dirty:
-            self.key.set_contents_from_file(self._file, headers=self._storage.headers, policy=self._storage.acl)
+            self.key.set_contents_from_file(self._file,
+                                            headers=self._storage.headers,
+                                            policy=self._storage.acl)
         self.key.close()
