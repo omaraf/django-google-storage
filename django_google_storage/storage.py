@@ -5,7 +5,7 @@ import mimetypes
 from django.conf import settings
 from django.core.files.storage import Storage
 from django.core.exceptions import ImproperlyConfigured, SuspiciousOperation
-from django.utils.encoding import force_unicode, smart_str
+from django.utils.encoding import force_text, smart_bytes
 
 from .format import SubdomainCallingFormat
 from .file import GSBotoStorageFile
